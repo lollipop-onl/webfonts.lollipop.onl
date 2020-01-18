@@ -25,11 +25,5 @@ UNICODE_RANGES.forEach((range, index) => {
     fontName: `GenEiAntique.${index}`
   };
 
-  console.log(parameter);
-
-  try {
-    fontRanger(parameter);
-  } catch (err) {
-    console.error(err);
-  }
+  fontRanger(parameter);
 });
