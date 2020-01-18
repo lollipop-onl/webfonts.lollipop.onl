@@ -47,7 +47,7 @@ const DEFAULT_PARAMETER = {
   locals: ['GenEiAntiqueNv5-M'],
 };
 
-let failedProcessIndexes = [];
+let completedProcessCount = 0;
 
 if (isMainThread) {
   console.log('BEGIN: MainThread process');
@@ -62,10 +62,6 @@ if (isMainThread) {
   });
 
   console.log('FINISH: MainThread process');
-
-  if (failedProcessIndexes.length > 0) {
-    console.error('Failed process indexes is:', failedProcessIndexes.join(','));
-  }
 } else {
   (async () => {
     const { ranges, index } = workerData;
@@ -81,10 +77,10 @@ if (isMainThread) {
     } catch (err) {
       console.error(`ERROR: ChildThread#${index} process`);
       console.error(err);
-
-      failedProcessIndexes.push(index);
     }
 
-    console.log(`FINISH: ChildThread#${index} process`);
+    completedProcessCount++;
+
+    console.log(`FINISH: ChildThread#${index} process (${completedProcessCount}/${UNICODE_RANGES.length})`);
   })();
 }
