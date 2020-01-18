@@ -22,12 +22,11 @@ const { loadConfig } = require('./utils');
 
   fontNames.forEach((fontName, index) => {
     const { fonts } = configs[index];
-
     const css = C.CSS_TEMPLATE({
       fonts,
       fontName,
     });
 
-    fs.writeFileSync(path.join(C.ROOT_DIR, 'fonts', `${fontName}.css`), css, 'utf8');
+    fs.writeFileSync(path.join(C.ROOT_DIR, 'output', `${fontName}.css`), css, 'utf8');
   });
 })();
