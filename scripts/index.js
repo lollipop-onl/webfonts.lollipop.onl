@@ -28,6 +28,6 @@ const { loadConfig } = require('./utils');
       fontName,
     });
 
-    fs.writeFileSync(path.join(C.ROOT_DIR, 'fonts', `${fontName}.css`), css);
+    fs.writeFileSync(path.join(C.ROOT_DIR, 'fonts', `${fontName}.css`), css, 'utf8');
   });
 })();
