@@ -67,21 +67,24 @@ if (isMainThread) {
     console.error('Failed process indexes is:', failedProcessIndexes.join(','));
   }
 } else {
-  const { ranges, index } = workerData;
+  (async () => {
+    const { ranges, index } = workerData;
 
-  console.log(`BEGIN: ChildThread#${index} process`);
+    console.log(`BEGIN: ChildThread#${index} process`);
 
-  try {
-    fontRanger({
-      ...DEFAULT_PARAMETER,
-      ranges,
-      fontName: `GenEiAntique.${index}`
-    });
-  } catch (err) {
-    console.error(err);
+    try {
+      await fontRanger({
+        ...DEFAULT_PARAMETER,
+        ranges,
+        fontName: `GenEiAntique.${index}`
+      });
+    } catch (err) {
+      console.error(`ERROR: ChildThread#${index} process`);
+      console.error(err);
 
-    failedProcessIndexes.push(index);
-  }
+      failedProcessIndexes.push(index);
+    }
 
-  console.log(`FINISH: ChildThread#${index} process`);
+    console.log(`FINISH: ChildThread#${index} process`);
+  })();
 }
