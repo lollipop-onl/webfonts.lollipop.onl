@@ -3,8 +3,8 @@ const C = require('../const');
 
 module.exports = _.template(`
 <% _.forEach(fonts, function(font) { %>
-<% const { fontFile = '', fontStyle = 'normal', fontWeight = 400, fontDisplay = 'swap', locals = [] } = font; %>
-<% const fontFileName = fontFile.replace(/^(.*)\\..*$/, '$1'); %>
+<% const { fontFile = '', fontStyle = 'normal', fontWeight = 400, fontDisplay = 'swap', locals = [] } = font %>
+<% const fontFileName = fontFile.replace(/^(.*)\\..*$/, '$1') %>
 
 <% _.forEach(C.UNICODE_RANGES.length, function(ranges, index) { %>
 
