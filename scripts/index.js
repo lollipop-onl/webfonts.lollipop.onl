@@ -18,10 +18,10 @@ const DEFAULT_PARAMETER = {
 
 console.log('happen');
 
-UNICODE_RANGES.forEach((range, index) => {
+UNICODE_RANGES.forEach((ranges, index) => {
   const parameter = {
     ...DEFAULT_PARAMETER,
-    ranges: UNICODE_RANGES,
+    ranges,
     fontName: `GenEiAntique.${index}`
   };
 
