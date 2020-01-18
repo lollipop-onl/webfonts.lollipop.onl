@@ -11,21 +11,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: yarnのキャッシュディレクトリパスを取得
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: node_modulesキャッシュ設定
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: ビルドキャッシュの設定
-        uses: actions/cache@v1
-        with:
-          path: node_modules/.cache
-          key: ${{ runner.os }}-${{ github.ref }}-cache
+#      - name: yarnのキャッシュディレクトリパスを取得
+#        id: yarn-cache
+#        run: echo "::set-output name=dir::$(yarn cache dir)"
+#      - name: node_modulesキャッシュ設定
+#        uses: actions/cache@v1
+#        with:
+#          path: ${{ steps.yarn-cache.outputs.dir }}
+#          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+#          restore-keys: |
+#            ${{ runner.os }}-yarn-
       - name: デプロイ
         uses: peaceiris/actions-gh-pages@v2
         env:
