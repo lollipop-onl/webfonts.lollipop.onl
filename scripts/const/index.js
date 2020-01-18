@@ -3,6 +3,9 @@ const path = require('path');
 /** Unicode範囲定義 */
 exports.UNICODE_RANGES = require('./unicode-ranges');
 
+/** CSS Template */
+exports.CSS_TEMPLATE = require('./css-template');
+
 /** ルートディレクトリパス */
 exports.ROOT_DIR = path.resolve(__dirname, '../..');
 

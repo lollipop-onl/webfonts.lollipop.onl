@@ -2,18 +2,3 @@ fonts:
   - fontFile: togalite-light.otf
     fontWeight: 300
     locals: [Togarite-light]
-  - fontFile: togalite-regular.otf
-    fontWeight: 400
-    locals: [Togarite-regular]
-  - fontFile: togalite-medium.otf
-    fontWeight: 500
-    locals: [Togarite-medium]
-  - fontFile: togalite-bold.otf
-    fontWeight: 700
-    locals: [Togarite-bold]
-  - fontFile: togalite-heavy.otf
-    fontWeight: 800
-    locals: [Togarite-heavy]
-  - fontFile: togalite-black.otf
-    fontWeight: 900
-    locals: [Togarite-black]

@@ -1,4 +1,6 @@
+const _ = require('lodash');
 const fg = require('fast-glob');
+const fs = require('fs');
 const path = require('path');
 const C = require("./const");
 const subset = require('./subset');
@@ -18,5 +20,15 @@ const { loadConfig } = require('./utils');
     return fonts.map((font) => subset(fontName, font));
   }));
 
-  console.log('this process is completed.');
+  fontNames.forEach((fontName, index) => {
+    const { fonts } = configs[index];
+    const css = C.CSS_TEMPLATE({
+      fonts,
+      fontName,
+    });
+
+    console.log(css);
+
+    fs.writeFileSync(path.join(C.ROOT_DIR, 'fonts', `${fontName}.css`), css);
+  });
 })();
