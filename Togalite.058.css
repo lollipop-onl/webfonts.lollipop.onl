@@ -1,0 +1,10 @@
+/* custom-subset */
+@font-face {
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src:
+    local('Togarite-light'),
+    url('/Togalite.058.custom-subset.woff2') format('woff2');
+  unicode-range: U+2116, U+2121, U+2126-2127, U+212B, U+212E, U+2135, U+213B, U+2194-2199, U+21B8-21B9, U+21C4-21C6, U+21CB-21CC, U+21D0, U+21E6-21E9, U+21F5, U+2202-2203, U+2205-2206, U+2208-220B, U+220F, U+2211, U+2213, U+2215, U+221A, U+221D, U+2220, U+2223, U+2225-2226, U+2228, U+222A-222E, U+2234-2237, U+223D, U+2243, U+2245, U+2248, U+224C, U+2252, U+2260, U+2262, U+2264-2265, U+226E-226F, U+2272-2273, U+2276-2277, U+2283-2287, U+228A-228B, U+2295-2299, U+22A0, U+22A5, U+22BF, U+22DA-22DB, U+22EF, U+2305-2307, U+2318, U+2329-232A, U+23B0-23B1, U+23BE-23CC, U+23CE, U+23DA-23DB, U+2423, U+2469-24D3;
+}

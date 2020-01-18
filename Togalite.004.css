@@ -1,0 +1,10 @@
+/* custom-subset */
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local('Togarite-bold'),
+    url('/Togalite.004.custom-subset.woff2') format('woff2');
+  unicode-range: U+F916-F959, U+F95B-F9F2, U+F9F4-F9F5;
+}

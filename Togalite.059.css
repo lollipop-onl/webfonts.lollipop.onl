@@ -1,0 +1,10 @@
+/* custom-subset */
+@font-face {
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src:
+    local('Togarite-black'),
+    url('/Togalite.059.custom-subset.woff2') format('woff2');
+  unicode-range: U+A1-A4, U+A6-A7, U+AA, U+AC-AD, U+B5-B6, U+B8-BA, U+BC-C8, U+CA-D5, U+D9-DB, U+DD-DF, U+E6, U+EE, U+F0, U+F5, U+F7, U+F9, U+FB, U+FE-102, U+110-113, U+11A-11B, U+128-12B, U+143-144, U+147-148, U+14C, U+14E-14F, U+152-153, U+168-16D, U+192, U+1A0-1A1, U+1AF, U+1CD-1DC, U+1F8-1F9, U+251, U+261, U+2C7, U+2C9, U+1E3E-1E3F, U+1EA0-1EBE, U+1EC0-1EC6, U+1EC8-1EF9, U+2011-2012, U+2016, U+2018-201A, U+201E, U+2021, U+2027, U+2030, U+2033, U+2035, U+2042, U+2047, U+2051, U+20A9, U+20AB-20AC, U+20DD-20DE, U+2100, U+2105, U+2109-210A, U+210F;
+}
