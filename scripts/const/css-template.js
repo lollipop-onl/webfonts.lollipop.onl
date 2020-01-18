@@ -3,7 +3,7 @@ const C = require('../const');
 
 module.exports = _.template(`
 <% _.forEach(fonts, function(font) { %>
-<% const { fontFile = '', fontStyle = 'normal', fontWeight = 400, fontDisplay: 'swap', locals = [] } = font; %>
+<% const { fontFile = '', fontStyle = 'normal', fontWeight = 400, fontDisplay = 'swap', locals = [] } = font; %>
 <% const fontFileName = fontFile.replace(/^(.*)\\..*$/, '$1'); %>
 
 <% _.forEach(C.UNICODE_RANGES.length, function(ranges, index) { %>
@@ -16,14 +16,14 @@ module.exports = _.template(`
   src:
     <% _.forEach(locals, function(local) { %>
     local('<%= local %>'),
-    <% } %>
+    <% }); %>
     url('/<%= fontFileName %>.<%= index %>.woff2') format('woff2');
   unicode-range: <%= ranges.join(', ') %>;
 }
 
-<% } %>
+<% }); %>
 
-<% } %>
+<% }); %>
 `, {
   variable: {
     C,
