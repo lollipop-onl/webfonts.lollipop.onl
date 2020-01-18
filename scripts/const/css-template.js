@@ -6,7 +6,7 @@ module.exports = _.template(`
 <% const { fontFile = '', fontStyle = 'normal', fontWeight = 400, fontDisplay = 'swap', locals = [] } = font %>
 <% const fontFileName = fontFile.replace(/^(.*)\\..*$/, '$1') %>
 
-<% _.forEach(C.UNICODE_RANGES.length, function(ranges, index) { %>
+<% _.forEach(C.UNICODE_RANGES, function(ranges, index) { %>
 
 @font-face {
   font-family: <%= fontName %>;
