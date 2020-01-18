@@ -1,8 +1,8 @@
 const { Worker, isMainThread, workerData } = require('worker_threads');
 const fontRanger = require('font-ranger/lib/font-ranger');
-const UNICODE_RANGES = require('./unicode-ranges');
+const UNICODE_RANGES = require('./_unicode-ranges');
 
-const BASE_PARAMETER = {
+const DEFAULT_PARAMETER = {
   fontFile: 'docs/GenEiAntiqueNv5-M.ttf',
   outputFolder: './docs',
   urlPrefix: '/fonts/',
@@ -18,32 +18,28 @@ const BASE_PARAMETER = {
 };
 
 if (isMainThread) {
-  /** サブセット化する関数 */
-  moodule.exports = (config) => {
-    console.log('BEGIN: MainThread process');
+  console.log('BEGIN: MainThread process');
 
-    UNICODE_RANGES.forEach((ranges, index) => {
-      new Worker(__filename, {
-        workerData: {
-          ranges,
-          index
-        }
-      });
+  UNICODE_RANGES.forEach((ranges, index) => {
+    new Worker(__filename, {
+      workerData: {
+        ranges,
+        index
+      }
     });
+  });
 
-    console.log('FINISH: MainThread process');
-  };
+  console.log('FINISH: MainThread process');
 } else {
   (async () => {
-    const { parameter, index } = workerData;
+    const { ranges, index } = workerData;
     const suffix = `${index}`.padStart(3, '0');
 
     console.log(`BEGIN: ChildThread#${index} process`);
 
     try {
       await fontRanger({
-        ...BASE_PARAMETER,
-        ...parameter,
+        ...DEFAULT_PARAMETER,
         ranges,
         fontName: `GenEiAntique.${suffix}`
       });
