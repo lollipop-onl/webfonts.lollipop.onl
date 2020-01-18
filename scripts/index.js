@@ -28,8 +28,6 @@ const { loadConfig } = require('./utils');
       fontName,
     });
 
-    console.log(css);
-
     fs.writeFileSync(path.join(C.ROOT_DIR, 'fonts', `${fontName}.css`), css);
   });
 })();
