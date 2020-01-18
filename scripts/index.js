@@ -17,4 +17,6 @@ const { loadConfig } = require('./utils');
 
     return fonts.map((font) => subset(fontName, font));
   }));
+
+  console.log('this process is completed.');
 })();

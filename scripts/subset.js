@@ -38,7 +38,7 @@ if (isMainThread) {
   (async () => {
     const { fontName, config, ranges, index } = workerData;
     const { fontFile, ...fontConfig } = config;
-    const { fontWeight } = fontConfig;
+    const fontFileName = fontFile.replace(/^(.*)\..*$/, '$1');
     const suffix = `${index}`.padStart(3, '0');
 
     console.log(`BEGIN: ChildThread#${index} process (${fontFile})`);
@@ -49,7 +49,7 @@ if (isMainThread) {
         ...fontConfig,
         fontFile: path.resolve(C.ROOT_DIR, 'fonts', fontName, fontFile),
         ranges,
-        fontName: `${fontName}.${fontWeight}.${suffix}`
+        fontName: `${fontFileName}.${suffix}`
       });
     } catch (err) {
       console.error(`ERROR: ChildThread#${index} process (${fontFile})`);
