@@ -23,10 +23,10 @@ if (isMainThread) {
         worker.on('exit', () => {
           completedCount++;
 
-          console.log(`FINISH: ChildThread process (${fontName}) ${completedCount}/${C.UNICODE_RANGES.length}`);
+          console.log(`FINISH: ChildThread process (${fontName}/${config.fontFile}) ${completedCount}/${C.UNICODE_RANGES.length}`);
 
           if (completedCount >= C.UNICODE_RANGES.length) {
-            console.log(`FINISH: MainThread process (${fontName})`);
+            console.log(`FINISH: MainThread process (${fontName}/${config.fontFile})`);
 
             resolve();
           }
@@ -38,6 +38,7 @@ if (isMainThread) {
   (async () => {
     const { fontName, config, ranges, index } = workerData;
     const { fontFile, ...fontConfig } = config;
+    const { fontWeight } = fontConfig;
     const suffix = `${index}`.padStart(3, '0');
 
     console.log(`BEGIN: ChildThread#${index} process (${fontFile})`);
@@ -48,13 +49,11 @@ if (isMainThread) {
         ...fontConfig,
         fontFile: path.resolve(C.ROOT_DIR, 'fonts', fontName, fontFile),
         ranges,
-        fontName: `${fontName}.${suffix}`
+        fontName: `${fontName}.${fontWeight}.${suffix}`
       });
     } catch (err) {
       console.error(`ERROR: ChildThread#${index} process (${fontFile})`);
       console.error(err);
     }
-
-    console.log(`FINISH: ChildThread#${index} process (${fontFile})`);
   })();
 }

@@ -15,6 +15,6 @@ exports.BASE_SUBSET_PARAMETER = {
   fontDisplay: 'swap',
   keepFormat: false,
   addWoff: false,
-  skipCss: false,
+  skipCss: true,
   copyOriginal: false,
 };
