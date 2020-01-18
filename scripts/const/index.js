@@ -1,13 +1,13 @@
-import path from 'path';
+const path = require('path');
 
 /** Unicode範囲定義 */
-export * from './unicode-ranges';
+exports.UNICODE_RANGES = require('./unicode-ranges');
 
 /** ルートディレクトリパス */
-export const ROOT_DIR = path.resolve(__dirname, '../..');
+exports.ROOT_DIR = path.resolve(__dirname, '../..');
 
 /** ベースのサブセットパラメータ */
-export const BASE_SUBSET_PARAMETER = {
+exports.BASE_SUBSET_PARAMETER = {
   outputFolder: './output',
   urlPrefix: '/',
   fontWeight: 400,

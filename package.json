@@ -6,7 +6,7 @@
   "author": "lollipop-onl <lollipop@simoochee.net>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node scripts/index.ts",
+    "start": "node scripts/index.js",
     "postinstall": "pip install fonttools brotli"
   },
   "dependencies": {

@@ -1,8 +1,8 @@
-import fg from 'fast-glob';
-import path from 'path';
-import * as C from "./const";
-import subset from './subset';
-import { loadConfig } from './utils';
+const fg = require('fast-glob');
+const path = require('path');
+const C = require("./const");
+const subset = require('./subset');
+const { loadConfig } = require('./utils');
 
 (async () => {
   const configFiles = await fg(path.join(C.ROOT_DIR, 'fonts', '**/config.yml'));

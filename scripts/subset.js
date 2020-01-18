@@ -1,12 +1,10 @@
-import { Worker, isMainThread, workerData } from 'worker_threads';
-import fontRanger from 'font-ranger/lib/font-ranger';
-import path from 'path';
-import * as C from './const';
-
-let exportModule: any;
+const { Worker, isMainThread, workerData } = require('worker_threads');
+const fontRanger = require('font-ranger/lib/font-ranger');
+const path = require('path');
+const C = require('./const');
 
 if (isMainThread) {
-  exportModule = (fontName: string, config: any): Promise<void> => {
+  module.exports = (fontName, config) => {
     return new Promise((resolve) => {
       console.log(`BEGIN: MainThread process (${fontName})`);
 
@@ -58,5 +56,3 @@ if (isMainThread) {
     console.log(`FINISH: ChildThread#${index} process (${fontName})`);
   })();
 }
-
-export default exportModule;

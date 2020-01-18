@@ -1,15 +1,14 @@
-import fg from 'fast-glob';
-import fs from 'fs';
-import path from 'path';
-import yaml from 'js-yaml';
-import * as C from './const';
+const fs = require('fs');
+const path = require('path');
+const yaml = require('js-yaml');
+const C = require('./const');
 
 /**
  * フォントの設定を読み込む
  * @param fontName フォント名
  */
-export const loadConfig = (fontName: string): Promise<void> => {
-  return new Promise((resolve, reject): void => {
+export const loadConfig = (fontName) => {
+  return new Promise((resolve, reject) => {
     const configFilePath = path.join(C.ROOT_DIR, 'fonts', fontName, 'config.yml');
 
     fs.readFile(configFilePath, 'utf8', (err, data) => {
