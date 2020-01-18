@@ -23,6 +23,8 @@ if (isMainThread) {
         worker.on('exit', () => {
           completedCount++;
 
+          console.log(`FINISH: ChildThread process (${fontName}) ${completedCount}/${C.UNICODE_RANGES.length}`);
+
           if (completedCount >= C.UNICODE_RANGES.length) {
             console.log(`FINISH: MainThread process (${fontName})`);
 
@@ -38,7 +40,7 @@ if (isMainThread) {
     const { fontFile, ...fontConfig } = config;
     const suffix = `${index}`.padStart(3, '0');
 
-    console.log(`BEGIN: ChildThread#${index} process (${fontName})`);
+    console.log(`BEGIN: ChildThread#${index} process (${fontFile})`);
 
     try {
       await fontRanger({
@@ -49,10 +51,10 @@ if (isMainThread) {
         fontName: `${fontName}.${suffix}`
       });
     } catch (err) {
-      console.error(`ERROR: ChildThread#${index} process (${fontName})`);
+      console.error(`ERROR: ChildThread#${index} process (${fontFile})`);
       console.error(err);
     }
 
-    console.log(`FINISH: ChildThread#${index} process (${fontName})`);
+    console.log(`FINISH: ChildThread#${index} process (${fontFile})`);
   })();
 }
