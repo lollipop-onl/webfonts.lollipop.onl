@@ -22,6 +22,7 @@ const { loadConfig } = require('./utils');
 
   fontNames.forEach((fontName, index) => {
     const { fonts } = configs[index];
+
     const css = C.CSS_TEMPLATE({
       fonts,
       fontName,

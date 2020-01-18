@@ -5,8 +5,4 @@ module.exports = _.template(`
 <% _.forEach(fonts, function(font) { %>
 
 <% }) %>
-`, {
-  variable: {
-    C,
-  },
-});
+`);
