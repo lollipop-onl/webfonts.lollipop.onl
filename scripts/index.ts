@@ -11,9 +11,7 @@ import { loadConfig } from './utils';
     .filter((fontName) => fontName && !/\//.test(fontName));
   const configs = await Promise.all(fontNames.map((fontName) => loadConfig(fontName)));
 
-  configs.forEach((config, index) => {
-    const fontName = fontNames[index];
-
-    subset(fontName, config);
-  });
+  await Promise.all(configs.map((config, index) => {
+    return subset(fontNames[index], config);
+  }));
 })();

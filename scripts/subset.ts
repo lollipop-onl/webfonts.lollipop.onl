@@ -8,6 +8,8 @@ let exportModule: any;
 if (isMainThread) {
   exportModule = (fontName: string, config: any): Promise<void> => {
     return new Promise((resolve) => {
+      console.log(`BEGIN: MainThread process (${fontName})`);
+
       let completedCount = 0;
 
       C.UNICODE_RANGES.forEach((ranges, index) => {
@@ -24,6 +26,8 @@ if (isMainThread) {
           completedCount++;
 
           if (completedCount >= C.UNICODE_RANGES.length) {
+            console.log(`FINISH: MainThread process (${fontName})`);
+
             resolve();
           }
         });
@@ -36,7 +40,7 @@ if (isMainThread) {
     const { fontFile, ...fontConfig } = config;
     const suffix = `${index}`.padStart(3, '0');
 
-    console.log(`BEGIN: ChildThread#${index} process`);
+    console.log(`BEGIN: ChildThread#${index} process (${fontName})`);
 
     try {
       await fontRanger({
@@ -47,11 +51,11 @@ if (isMainThread) {
         fontName: `${fontName}.${suffix}`
       });
     } catch (err) {
-      console.error(`ERROR: ChildThread#${index} process`);
+      console.error(`ERROR: ChildThread#${index} process (${fontName})`);
       console.error(err);
     }
 
-    console.log(`FINISH: ChildThread#${index} process`);
+    console.log(`FINISH: ChildThread#${index} process (${fontName})`);
   })();
 }
 
