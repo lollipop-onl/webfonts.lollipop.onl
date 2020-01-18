@@ -8,7 +8,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noEmit": true,
     "types": [
       "@types/node"
