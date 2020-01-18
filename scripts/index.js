@@ -11,7 +11,10 @@ const { loadConfig } = require('./utils');
     .filter((fontName) => fontName && !/\//.test(fontName));
   const configs = await Promise.all(fontNames.map((fontName) => loadConfig(fontName)));
 
-  await Promise.all(configs.map((config, index) => {
-    return subset(fontNames[index], config);
+  await Promise.all(configs.flatMap((config, index) => {
+    const { fonts = [] } = config;
+    const fontName = fontNames[index];
+
+    return fonts.map((font) => subset(fontName, font));
   }));
 })();
