@@ -6,15 +6,10 @@
   "author": "lollipop-onl <lollipop@simoochee.net>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node scripts/index.ts",
+    "start": "node scripts/index.js",
     "postinstall": "pip install fonttools brotli"
   },
   "dependencies": {
-    "font-ranger": "^3.0.5",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
-  },
-  "devDependencies": {
-    "@types/node": "^13.1.8"
+    "font-ranger": "^3.0.5"
   }
 }
