@@ -47,8 +47,6 @@ const DEFAULT_PARAMETER = {
   locals: ['GenEiAntiqueNv5-M'],
 };
 
-let completedProcessCount = 0;
-
 if (isMainThread) {
   console.log('BEGIN: MainThread process');
 
@@ -65,6 +63,7 @@ if (isMainThread) {
 } else {
   (async () => {
     const { ranges, index } = workerData;
+    const suffix = `${index}`.padStart(3, '0');
 
     console.log(`BEGIN: ChildThread#${index} process`);
 
@@ -72,15 +71,13 @@ if (isMainThread) {
       await fontRanger({
         ...DEFAULT_PARAMETER,
         ranges,
-        fontName: `GenEiAntique.${index}`
+        fontName: `GenEiAntique.${suffix}`
       });
     } catch (err) {
       console.error(`ERROR: ChildThread#${index} process`);
       console.error(err);
     }
 
-    completedProcessCount++;
-
-    console.log(`FINISH: ChildThread#${index} process (${completedProcessCount}/${UNICODE_RANGES.length})`);
+    console.log(`FINISH: ChildThread#${index} process`);
   })();
 }
