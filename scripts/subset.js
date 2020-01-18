@@ -47,6 +47,7 @@ if (isMainThread) {
         ...C.BASE_SUBSET_PARAMETER,
         ...fontConfig,
         fontFile: path.resolve(C.ROOT_DIR, 'fonts', fontName, fontFile),
+        outputFolder: `./output/${fontName}`,
         ranges,
         fontName: `${fontFileName}.${index}`
       });

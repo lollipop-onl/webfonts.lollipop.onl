@@ -11,7 +11,6 @@ exports.ROOT_DIR = path.resolve(__dirname, '../..');
 
 /** ベースのサブセットパラメータ */
 exports.BASE_SUBSET_PARAMETER = {
-  outputFolder: './output',
   urlPrefix: '/',
   fontWeight: 400,
   fontStyle: 'normal',

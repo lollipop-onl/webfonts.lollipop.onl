@@ -17,7 +17,7 @@ module.exports = _.template(`
     <% _.forEach(locals, function(local) { %>
     local('<%= local %>'),
     <% }) %>
-    url('/<%= fontFileName %>.<%= index %>.woff2') format('woff2');
+    url('/<%= fontName %>/<%= fontFileName %>.<%= index %>.woff2') format('woff2');
   unicode-range: <%= ranges.join(', ') %>;
 }
 
