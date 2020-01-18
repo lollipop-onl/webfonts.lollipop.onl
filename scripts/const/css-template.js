@@ -1,8 +1,8 @@
 const _ = require('lodash');
 const C = require('../const');
 
-module.exports = _.template(`
-<% _.forEach(fonts, function(font) { %>
+module.exports = _.template(
+  `
 <% const { fontFile = '', fontStyle = 'normal', fontWeight = 400, fontDisplay = 'swap', locals = [] } = font %>
 <% const fontFileName = fontFile.replace(/^(.*)\\..*$/, '$1') %>
 
@@ -17,14 +17,15 @@ module.exports = _.template(`
     <% _.forEach(locals, function(local) { %>
     local('<%= local %>'),
     <% }) %>
-    url('/<%= fontName %>/<%= fontFileName %>.<%= index %>.woff2') format('woff2');
+    url('./<%= fontName %>/<%= fontFileName %>.<%= index %>.woff2') format('woff2');
   unicode-range: <%= ranges.join(', ') %>;
 }
 
 <% }) %>
-
-<% }) %>
-`, {
+  `
+    .replace(/\n+/, '\n')
+    .replace(/^\n+|\n+$/, ''),
+  {
   imports: {
     C,
   },
