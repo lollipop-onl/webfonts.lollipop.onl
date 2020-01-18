@@ -1,0 +1,20 @@
+{
+  "name": "@lollipop-onl/webfonts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lollipop-onl/webfonts.git",
+  "author": "lollipop-onl <lollipop@simoochee.net>",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node scripts/index.ts",
+    "postinstall": "pip install fonttools brotli"
+  },
+  "dependencies": {
+    "font-ranger": "^3.0.5",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.8"
+  }
+}
