@@ -7,7 +7,7 @@ const C = require('./const');
  * フォントの設定を読み込む
  * @param fontName フォント名
  */
-export const loadConfig = (fontName) => {
+exports.loadConfig = (fontName) => {
   return new Promise((resolve, reject) => {
     const configFilePath = path.join(C.ROOT_DIR, 'fonts', fontName, 'config.yml');
 
