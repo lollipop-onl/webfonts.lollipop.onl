@@ -8,8 +8,7 @@ exports.CSS_TEMPLATE = _.template(
   const fontFileName = fontFile.replace(/^(.*)\\..*$/, '$1')
   
   _.forEach(C.UNICODE_RANGES, function(ranges, index) {
- %>
-@font-face {
+ %>@font-face {
   font-family: <%= fontName %>;
   font-style: <%= fontStyle %>;
   font-weight: <%= fontWeight %>;
@@ -18,8 +17,8 @@ exports.CSS_TEMPLATE = _.template(
     local('<%= local %>'),<% }) %>
     url('./<%= fontName %>/<%= fontFileName %>.<%= index %>.custom-subset.woff2') format('woff2');
   unicode-range: <%= ranges.join(', ') %>;
-}<% }) %>
-  `
+}
+<% }) %>`
     .replace(/\n+/, '\n')
     .replace(/^\n+|\n+$/, ''),
   {
@@ -34,6 +33,5 @@ exports.WEBFONT_LICENSE_CSS = _.template(
 <% license.split('\\n').forEach(function (line) { %> * <%= line %>
 <% }); %> */
 <% } %>
-<%= css %>
-  `
+<%= css %>`
 );
