@@ -9,6 +9,7 @@
     "start": "node scripts/index.js",
     "postinstall": "pip install fonttools brotli",
     "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
     "copy": "cpx \"output/**/*\" app/static"
   },
   "dependencies": {
