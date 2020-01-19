@@ -10,15 +10,23 @@
     "postinstall": "pip install fonttools brotli"
   },
   "dependencies": {
+    "@nuxt/typescript-build": "^0.5.6",
     "fast-glob": "^3.1.1",
     "font-ranger": "^3.0.5",
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.15",
+    "nuxt": "^2.11.0",
+    "nuxt-property-decorator": "^2.5.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },
   "devDependencies": {
+    "@nuxt/typescript-runtime": "^0.3.8",
     "@types/js-yaml": "^3.12.1",
-    "@types/node": "^13.1.8"
+    "@types/node": "^13.1.8",
+    "node-sass": "^4.13.1",
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^8.0.2"
   }
 }
