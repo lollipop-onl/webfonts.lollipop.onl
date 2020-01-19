@@ -10,7 +10,7 @@ const { loadConfig } = require('./utils');
   const configFiles = await fg(path.join(C.ROOT_DIR, 'fonts', '**/config.yml'));
   const fontNames = configFiles
     .map((filePath) => filePath.replace(/^.*\/(.*)\/config.yml$/, '$1'))
-    .filter((fontName) => fontName && !/\//.test(fontName));
+    .filter((fontName) => fontName && !/\//.test(fontName) && !/^_/.test(fontName));
   const configs = await Promise.all(fontNames.map((fontName) => loadConfig(fontName)));
 
   await Promise.all(configs.flatMap((config, index) => {
@@ -21,7 +21,7 @@ const { loadConfig } = require('./utils');
   }));
 
   fontNames.forEach((fontName, index) => {
-    const { fonts } = configs[index];
+    const { fonts, license = '' } = configs[index];
 
     fonts.forEach((font) => {
       const { fontWeight = 400 } = font;
@@ -29,8 +29,12 @@ const { loadConfig } = require('./utils');
         font,
         fontName,
       });
+      const liensedCss = C.WEBFONT_LICENSE_CSS({
+        license,
+        css
+      });
 
-      fs.writeFileSync(path.join(C.ROOT_DIR, 'output', `${fontName}.${fontWeight}.css`), css, 'utf8');
+      fs.writeFileSync(path.join(C.ROOT_DIR, 'output', `${fontName}.${fontWeight}.css`), liensedCss, 'utf8');
     });
   });
 })();
