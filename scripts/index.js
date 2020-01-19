@@ -42,12 +42,10 @@ const { loadConfig } = require('./utils');
       });
       const cssFileName = `${fontName}.${fontWeight}.css`;
 
-      console.log(`Output ${cssFileName}`);
-
       fs.writeFileSync(path.join(C.ROOT_DIR, 'output', cssFileName), licensedCss, 'utf8');
     });
 
-    const allInOneCSS = fontNames.map((font) => {
+    const allInOneCSS = fonts.map((font) => {
       return C.CSS_TEMPLATE({
         font,
         fontName,
