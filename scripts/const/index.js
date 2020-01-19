@@ -4,14 +4,9 @@ const path = require('path');
 exports.UNICODE_RANGES = require('./unicode-ranges');
 
 /** CSS Template */
-const {
-  CSS_TEMPLATE, WEBFONT_LICENSE_OFL, WEBFONT_LICENSE_IPA, WEBFONT_LICENSE_APACHE, WEBFONT_LICENSE_CSS,
-} = require('./css-template');
+const { CSS_TEMPLATE, WEBFONT_LICENSE_CSS } = require('./css-template');
 
 exports.CSS_TEMPLATE = CSS_TEMPLATE;
-exports.WEBFONT_LICENSE_OFL = WEBFONT_LICENSE_OFL;
-exports.WEBFONT_LICENSE_IPA = WEBFONT_LICENSE_IPA;
-exports.WEBFONT_LICENSE_APACHE = WEBFONT_LICENSE_APACHE;
 exports.WEBFONT_LICENSE_CSS = WEBFONT_LICENSE_CSS;
 
 /** ルートディレクトリパス */
