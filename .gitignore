@@ -5,6 +5,10 @@
 
 # Output
 output
+app/static/*.woff2
+app/static/*.css
+app/static/catalog.json
+app/static/unicode-ranges.json
 
 # Logs
 logs
