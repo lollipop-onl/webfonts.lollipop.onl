@@ -1,0 +1,3 @@
+fonts:
+  - fontFile: dokumugi.ttf
+    locals: [dokumugi]
