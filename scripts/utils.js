@@ -9,7 +9,7 @@ const C = require('./const');
  */
 exports.loadConfig = (fontName) => {
   return new Promise((resolve, reject) => {
-    const configFilePath = path.join(C.ROOT_DIR, 'fonts', fontName, 'config.yml');
+    const configFilePath = path.join(C.ROOT_DIR, 'fonts', fontName, '_config.yml');
 
     fs.readFile(configFilePath, 'utf8', (err, data) => {
       if (err) {

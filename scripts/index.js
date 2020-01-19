@@ -7,7 +7,7 @@ const subset = require('./subset');
 const { loadConfig } = require('./utils');
 
 (async () => {
-  const configFiles = await fg(path.join(C.ROOT_DIR, 'fonts', '**/config.yml'));
+  const configFiles = await fg(path.join(C.ROOT_DIR, 'fonts', '**/_config.yml'));
   const fontNames = configFiles
     .map((filePath) => filePath.replace(/^.*\/(.*)\/config.yml$/, '$1'))
     .filter((fontName) => fontName && !/\//.test(fontName) && !/^_/.test(fontName));
