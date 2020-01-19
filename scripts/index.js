@@ -55,7 +55,7 @@ const { loadConfig } = require('./utils');
     });
     const licensedCss = C.WEBFONT_LICENSE_CSS({
       license,
-      allInOneCSS,
+      css: allInOneCSS,
     });
 
     fs.writeFileSync(path.join(C.ROOT_DIR, 'output', `${fontName}.css`), licensedCss, 'utf8');
