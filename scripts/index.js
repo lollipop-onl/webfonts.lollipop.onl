@@ -12,13 +12,20 @@ const { loadConfig } = require('./utils');
     .map((filePath) => filePath.replace(/^.*\/(.*)\/config.yml$/, '$1'))
     .filter((fontName) => fontName && !/\//.test(fontName));
   const configs = await Promise.all(fontNames.map((fontName) => loadConfig(fontName)));
+  //
+  // await Promise.all(configs.flatMap((config, index) => {
+  //   const { fonts = [] } = config;
+  //   const fontName = fontNames[index];
+  //
+  //   return fonts.map((font) => subset(fontName, font));
+  // }));
 
-  await Promise.all(configs.flatMap((config, index) => {
-    const { fonts = [] } = config;
-    const fontName = fontNames[index];
+  for (let i = 0; i < configs.length; i++) {
+    const { fonts = [] } = configs[i];
+    const fontName = fontNames[i];
 
-    return fonts.map((font) => subset(fontName, font));
-  }));
+    await Promise.all(fonts.map((font) => subset(fontName, font)));
+  }
 
   fontNames.forEach((fontName, index) => {
     const { fonts, license = '' } = configs[index];
