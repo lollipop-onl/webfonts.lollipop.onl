@@ -28,6 +28,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - run: yarn install
       - run: yarn start
+      - run: yarn copy
       - run: yarn build
       - name: デプロイ
         uses: peaceiris/actions-gh-pages@v2
