@@ -47,7 +47,7 @@ const { loadConfig } = require('./utils');
       fs.writeFileSync(path.join(C.ROOT_DIR, 'output', cssFileName), licensedCss, 'utf8');
     });
 
-    const allInOneCSS = fontNames.flatMap((font) => {
+    const allInOneCSS = fontNames.map((font) => {
       return C.CSS_TEMPLATE({
         font,
         fontName,

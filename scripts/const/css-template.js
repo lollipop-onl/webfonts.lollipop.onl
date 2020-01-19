@@ -18,6 +18,7 @@ exports.CSS_TEMPLATE = _.template(
     url('./<%= fontName %>/<%= fontFileName %>.<%= index %>.custom-subset.woff2') format('woff2');
   unicode-range: <%= ranges.join(', ') %>;
 }
+
 <% }) %>`
     .replace(/\n+/, '\n')
     .replace(/^\n+|\n+$/, ''),
