@@ -29,12 +29,25 @@ const { loadConfig } = require('./utils');
         font,
         fontName,
       });
-      const liensedCss = C.WEBFONT_LICENSE_CSS({
+      const licensedCss = C.WEBFONT_LICENSE_CSS({
         license,
         css
       });
 
-      fs.writeFileSync(path.join(C.ROOT_DIR, 'output', `${fontName}.${fontWeight}.css`), liensedCss, 'utf8');
+      fs.writeFileSync(path.join(C.ROOT_DIR, 'output', `${fontName}.${fontWeight}.css`), licensedCss, 'utf8');
     });
+
+    const allInOneCSS = fontNames.flatMap((font) => {
+      return C.CSS_TEMPLATE({
+        font,
+        fontName,
+      });
+    });
+    const licensedCss = C.WEBFONT_LICENSE_CSS({
+      license,
+      allInOneCSS,
+    });
+
+    fs.writeFileSync(path.join(C.ROOT_DIR, 'output', `${fontName}.css`), licensedCss, 'utf8');
   });
 })();
