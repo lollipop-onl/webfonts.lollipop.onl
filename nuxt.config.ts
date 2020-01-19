@@ -6,6 +6,9 @@ const config: Configuration = {
   buildModules: ['@nuxt/typescript-build'],
   modules: ['@nuxt/http'],
   css: ['reset-css'],
+  http: {
+    baseURL: '/'
+  }
 };
 
 module.exports = config;
