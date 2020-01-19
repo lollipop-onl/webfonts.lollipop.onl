@@ -5,6 +5,7 @@ const config: Configuration = {
   srcDir: 'app',
   buildModules: ['@nuxt/typescript-build'],
   modules: ['@nuxt/http'],
+  css: ['reset-css'],
 };
 
 module.exports = config;

@@ -1,23 +1,30 @@
 <template lang="pug">
-  div
-    h1 hello.
-    select(v-model="selectedFontName")
-      option(
-        v-for="({ fontName }) in catalog"
-        :value="fontName"
-      ) {{ fontName }}
-    select(v-model="selectedFontWeight")
-      option(
-        v-for="weight in fontWeights"
-        :value="weight"
-      ) {{ weight }}
-    select(v-model="unicodeIndex")
-      option(
-        v-for="(_, i) in unicodeRanges"
-        :value="i"
-      ) {{ i }}
-    textarea(:style="fontStyle")
-    RangePreview(
+  .page-container
+    h1.page-title.title(:style="fontStyle")
+      .sub lollipop.onl
+      .main Webフォントプレビュー
+    .free-textarea.textarea(
+      :style="fontStyle"
+      placeholder="Free textarea"
+      contenteditable="true"
+    )
+    .options
+      select(v-model="selectedFontName")
+        option(
+          v-for="({ fontName }) in catalog"
+          :value="fontName"
+        ) {{ fontName }}
+      select(v-model="selectedFontWeight")
+        option(
+          v-for="weight in fontWeights"
+          :value="weight"
+        ) {{ weight }}
+      select(v-model="unicodeIndex")
+        option(
+          v-for="(_, i) in unicodeRanges"
+          :value="i"
+        ) {{ i }}
+    RangePreview.preview(
       :style="fontStyle"
       :unicodeRanges="unicodeRanges"
       :index="unicodeIndex"
@@ -128,4 +135,36 @@ export default class IndexPage extends Vue {
 </script>
 
 <style lang="sass" scoped>
+  .page-container
+    &
+      padding: 32px 20px 100px
+
+    & > .textarea,
+    & > .options,
+    & > .preview
+      margin-top: 32px
+
+  .page-title
+    &
+      line-height: 1.5
+
+    & > .sub
+      font-size: 12px
+
+    & > .main
+      font-size: 20px
+
+  .free-textarea
+    &
+      width: 100%
+      box-sizing: border-box
+      padding: 1em 1.2em
+      font-size: 24px
+      line-height: 1.5
+      border: 1px solid #cccccc
+      border-radius: 4px
+
+    &:empty::before
+      content: attr(placeholder)
+      opacity: 0.5
 </style>

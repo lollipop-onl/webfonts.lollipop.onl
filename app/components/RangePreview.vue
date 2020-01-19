@@ -1,11 +1,12 @@
 <template lang="pug">
   div
-    ul(
+    ul.range-preview(
       v-for="(unicodeRange, i) in unicodeRanges"
       v-if="i === index"
     )
-      li(
+      li.char(
         v-for="unicode in unicodeRange"
+        :unicode="unicode"
       ) {{ toCharacter(unicode) }}
 </template>
 
@@ -35,4 +36,34 @@ export default class RangePreview extends Vue {
 </script>
 
 <style lang="sass" scoped>
+  .range-preview
+    &
+      display: flex
+      flex-wrap: wrap
+
+    & > .char
+      position: relative
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 56px
+      height: 56px
+      font-size: 24px
+
+    & > .char::before
+      position: absolute
+      top: 0
+      left: 50%
+      visibility: hidden
+      content: attr(unicode)
+      font-family: monospace
+      font-size: 12px
+      white-space: nowrap
+      transform: translate(-50%, -100%)
+
+    & > .char:hover
+      background: #ccc
+
+    & > .char:hover::before
+      visibility: visible
 </style>
