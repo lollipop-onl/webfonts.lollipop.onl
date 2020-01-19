@@ -42,7 +42,7 @@ const { loadConfig } = require('./utils');
       });
       const cssFileName = `${fontName}.${fontWeight}.css`;
 
-      fs.writeFileSync(path.join(C.ROOT_DIR, 'output', cssFileName), licensedCss, 'utf8');
+      fs.writeFileSync(path.join(C.OUTPUT_DIR, cssFileName), licensedCss, 'utf8');
     });
 
     const allInOneCSS = fonts.map((font) => {
@@ -56,6 +56,19 @@ const { loadConfig } = require('./utils');
       css: allInOneCSS,
     });
 
-    fs.writeFileSync(path.join(C.ROOT_DIR, 'output', `${fontName}.css`), licensedCss, 'utf8');
+    fs.writeFileSync(path.join(C.OUTPUT_DIR, `${fontName}.css`), licensedCss, 'utf8');
   });
+
+  fs.writeFileSync(path.join(C.OUTPUT_DIR, 'unicode-ranges.json'), JSON.stringify(C.UNICODE_RANGES), 'utf8');
+
+  const catalog = configFiles.map((config, index) => {
+    const { fonts = [] } = config;
+    const fontName = fontNames[index];
+
+    return {
+      fontName,
+      weights: fonts.map(({ fontWeight }) => fontWeight),
+    };
+  });
+  fs.writeFileSync(path.join(C.OUTPUT_DIR, 'catalog.json'), JSON.stringify(catalog), 'utf8');
 })();

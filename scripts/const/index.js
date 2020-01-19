@@ -12,6 +12,9 @@ exports.WEBFONT_LICENSE_CSS = WEBFONT_LICENSE_CSS;
 /** ルートディレクトリパス */
 exports.ROOT_DIR = path.resolve(__dirname, '../..');
 
+/** 出力ディレクトリパス */
+exports.OUTPUT_DIR = path.join(exports.ROOT_DIR, 'output');
+
 /** ベースのサブセットパラメータ */
 exports.BASE_SUBSET_PARAMETER = {
   urlPrefix: '/',
