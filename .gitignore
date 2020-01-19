@@ -3,6 +3,9 @@
 # Webstorm
 .idea
 
+# Output
+output
+
 # Logs
 logs
 *.log
