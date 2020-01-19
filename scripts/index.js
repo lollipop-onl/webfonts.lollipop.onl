@@ -40,8 +40,11 @@ const { loadConfig } = require('./utils');
         license,
         css
       });
+      const cssFileName = `${fontName}.${fontWeight}.css`;
 
-      fs.writeFileSync(path.join(C.ROOT_DIR, 'output', `${fontName}.${fontWeight}.css`), licensedCss, 'utf8');
+      console.log(`Output ${cssFileName}`);
+
+      fs.writeFileSync(path.join(C.ROOT_DIR, 'output', cssFileName), licensedCss, 'utf8');
     });
 
     const allInOneCSS = fontNames.flatMap((font) => {
