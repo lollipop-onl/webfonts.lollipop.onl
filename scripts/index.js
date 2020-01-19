@@ -61,13 +61,13 @@ const { loadConfig } = require('./utils');
 
   fs.writeFileSync(path.join(C.OUTPUT_DIR, 'unicode-ranges.json'), JSON.stringify(C.UNICODE_RANGES), 'utf8');
 
-  const catalog = configFiles.map((config, index) => {
+  const catalog = configs.map((config, index) => {
     const { fonts = [] } = config;
     const fontName = fontNames[index];
 
     return {
       fontName,
-      weights: fonts.map(({ fontWeight }) => fontWeight),
+      weights: fonts.map(({ fontWeight = 400 }) => fontWeight),
     };
   });
   fs.writeFileSync(path.join(C.OUTPUT_DIR, 'catalog.json'), JSON.stringify(catalog), 'utf8');
