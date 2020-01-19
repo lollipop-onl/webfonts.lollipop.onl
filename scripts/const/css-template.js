@@ -84,7 +84,7 @@ exports.WEBFONT_LICENSE_CSS = _.template(
   `
 <% if (license) { %>
 /*
-<% license.split('\n').forEach(function (line) { %> * <%= line %><% }); %>
+<% license.split('\\n').forEach(function (line) { %> * <%= line %><% }); %>
  */
 <% } %>
 <%= css %>
